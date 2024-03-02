@@ -41,3 +41,21 @@ export const DeleteTask = async (req, res) => {
         res.status(500).json({error: 'error boss'})
     }
 }
+
+export const UpdateTask = async (req, res) => {
+    const {id} = req.params
+    const {title} = req.body
+    try {
+        const updateTask = await prisma.task.update({
+            where: {
+                id: Number(id)
+            },
+            data: {
+                title: title
+            }
+        })
+        res.status(200).json(updateTask)
+    } catch (error) {
+        res.status(500).send({message: 'Error 500'})
+    }
+}
