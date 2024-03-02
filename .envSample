@@ -1,1 +1,2 @@
 DATABASE_URL="mysql://root:@localhost:port/db-name"
+node_version = 18.19.1
